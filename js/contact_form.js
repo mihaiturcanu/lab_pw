@@ -51,5 +51,19 @@ function toggleMode(){
     });
 }
 
+function toggleVisibility(){
+    const list = document.querySelectorAll('main h2');
+    list.forEach(function(h2){
+        h2.addEventListener('click', function(){
+            let next = h2.nextElementSibling;
+            while(next && next.tagName !== 'h2'){
+                next.classList.toggle('hidden');
+                next = next.nextElementSibling;
+            }
+        });
+    });
+}
+
 greeting();
 toggleMode();
+toggleVisibility();

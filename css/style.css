@@ -147,3 +147,7 @@ body.dark-mode footer, body.dark-mode a {
     background-color: #2a2a2a;
     color: var(--text-color);
 }
+
+.hidden{
+    display: none;
+}
