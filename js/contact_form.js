@@ -64,6 +64,24 @@ function toggleVisibility(){
     });
 }
 
+function scrollToTop(){
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+            backToTop.classList.remove("hidden");
+        } else {
+            backToTop.classList.add("hidden");
+        }
+    });
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
+
 greeting();
 toggleMode();
 toggleVisibility();
+scrollToTop();
