@@ -38,4 +38,18 @@ function greeting(){
     }
 }
 
+function toggleMode(){
+    const toggle = document.getElementById('toggle');
+    toggle.addEventListener('click', function(){
+    const isDark = document.body.classList.toggle('dark-mode');
+    if (isDark) {
+        toggle.textContent = "Light Mode";
+    } else {
+        toggle.textContent = "Dark Mode";
+    }
+    
+    });
+}
+
 greeting();
+toggleMode();

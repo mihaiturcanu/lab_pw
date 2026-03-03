@@ -134,3 +134,16 @@ label {
 #btn:hover {
     background-color: var(--secondary-color);
 }
+
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #e4e4e4;
+    --primary-color: #4caf50;
+    --secondary-color: #42a5f5;
+}
+
+body.dark-mode aside,
+body.dark-mode footer, body.dark-mode a {
+    background-color: #2a2a2a;
+    color: var(--text-color);
+}
