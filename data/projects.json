@@ -1,0 +1,6 @@
+[
+  { "name": "Portfolio Website", "tech": "HTML/CSS/JS", "done": true },
+  { "name": "ToDo App", "tech": "JavaScript", "done": true },
+  { "name": "Weather App", "tech": "API + JS", "done": false },
+  { "name": "Blog Platform", "tech": "Node.js", "done": true }
+]
