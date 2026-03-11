@@ -17,6 +17,8 @@ function App() {
     <p>Student Calculatoare, anul II</p>
     <p>Ai apasat de {count} ori</p>
     <button onClick={() => setCount(count + 1)}>Click</button>
+    <button onClick={() => setCount(count - 1)}>Decrease counter</button>
+    <button onClick={() => setCount(0)}>Reset counter</button>
     {projects.map(function(item, index){
       return <Card key={index} title={item.title} description={item.description} />
     })}
