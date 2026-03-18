@@ -2,6 +2,7 @@ import Card from './Card';
 import QuickNote from './QuickNote';
 import TodoList from './TodoList';
 import ContactForm from './ContactForm';
+import Clock from './Clock';
 import { useState } from 'react';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     {title:"Proiect 5", description:"Personal webpage"}
   ];   
   return (         
-  <div>             
+  <div>
+    <Clock/>             
     <h1>Dashboard</h1>             
     <p>Mihai Turcanu </p>
     <p>Student Calculatoare, anul II</p>
