@@ -31,6 +31,12 @@ function ProjectList(){
                 if(project.done)
                 return <Card key={index} title={project.title} description={project.tech}/>
             })}
+            <div>
+                <h3>Statistica</h3>
+                <p><b>Total proiecte:</b> {projects.length}</p>
+                <p><b>Finalizate:</b> {projects.filter(p => p.done).length}</p>
+                <p><b>In lucru: </b>{projects.filter(p => !p.done).length}</p>
+            </div>
         </div>
     );
 }
