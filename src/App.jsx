@@ -5,6 +5,7 @@ import ContactForm from './ContactForm';
 import Clock from './Clock';
 import { useState } from 'react';
 import ProjectList from './ProjectList';
+import LoadApiData from './LoadApiData';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,7 +18,8 @@ function App() {
   ];   
   return (         
   <div>
-    <Clock/>             
+    <Clock/>
+    <LoadApiData/>             
     <h1>Dashboard</h1>             
     <p>Mihai Turcanu </p>
     <p>Student Calculatoare, anul II</p>
