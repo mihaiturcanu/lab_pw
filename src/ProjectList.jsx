@@ -5,6 +5,7 @@ function ProjectList(){
     const[projects, setProjects] = useState([]);
     const[loading, setLoading] = useState(true);
     const[error, setError] = useState(null);
+    const[search, setSearch] = useState('');
     useEffect(function(){
         fetch('/data/projects.json').then(function(response){
             return response.json();
@@ -23,7 +24,10 @@ function ProjectList(){
     return(
         <div>
             <h3>Proiecte</h3>
-            {projects.map(function(project, index){
+            <input value={search} onChange={(e) => setSearch(e.target.value)}></input>
+            {projects.filter(function(p){
+                return p.title.toLowerCase().includes(search.toLowerCase());
+            }).map(function(project, index){
                 if(project.done)
                 return <Card key={index} title={project.title} description={project.tech}/>
             })}
