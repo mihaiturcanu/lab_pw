@@ -4,6 +4,7 @@ import TodoList from './TodoList';
 import ContactForm from './ContactForm';
 import Clock from './Clock';
 import { useState } from 'react';
+import ProjectList from './ProjectList';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ function App() {
     {projects.map(function(item, index){
       return <Card key={index} title={item.title} description={item.description} />
     })}
+    <ProjectList/>
     <QuickNote/>
     <TodoList/>
     <ContactForm/>
