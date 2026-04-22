@@ -15,7 +15,31 @@ const projects = [
 ];  // GET /api/projects - returneaza toate proiectele 
 app.get('/api/projects', function(req, res) {     
     res.json(projects); 
-}); 
+});
+
+app.get('/api/projects/:id', function(req, res){
+    const project = projects.find(p => p.id === parseInt(req.params.id));
+    if(project==null){
+        res.status(404).json({ error: 'Not found' })
+    }
+    else res.json(project);
+});
+
+app.get('/api/stats', function(req, res){
+    const count = projects.length;
+    const finished = projects.filter(function(p){
+        if(p.done === true) return p;
+    }).length;
+    const unfinished = projects.filter(function(p){
+        if(p.done === false) return p;
+    }).length;
+    res.json({count: count,
+              finished: finished,
+              unfinished: unfinished
+    }
+    );
+
+});
 
 // Porneste serverul 
 app.listen(PORT, function() { 
