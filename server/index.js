@@ -1,6 +1,20 @@
 const express = require('express'); 
 const app = express(); 
-const PORT = 3000; 
+const PORT = 3000;
+
+app.use(express.json());
+// POST /api/projects - adauga un proiect nou 
+app.post('/api/projects', function(req, res) {     
+    const newProject = {         
+        id: projects.length + 1,         
+        title: req.body.title,         
+        tech: req.body.tech,         
+        done: req.body.done || false,     
+    };     
+    projects.push(newProject);     
+    res.status(201).json(newProject); 
+});
+
 // Prima ruta: raspunde la GET / 
 app.get('/', function(req, res) { 
     res.json({ message: 'Serverul functioneaza!' }); 
@@ -12,7 +26,9 @@ const projects = [
     { id: 2, title: "Calculator Buget", tech: "JS", done: true },     
     { id: 3, title: "Dashboard React", tech: "React", done: false },     
     { id: 4, title: "API Meteo", tech: "React, API", done: false }, 
-];  // GET /api/projects - returneaza toate proiectele 
+];  
+
+// GET /api/projects - returneaza toate proiectele 
 app.get('/api/projects', function(req, res) {     
     res.json(projects); 
 });
