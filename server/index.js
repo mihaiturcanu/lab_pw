@@ -68,6 +68,18 @@ app.delete('/api/projects/:id', function(req, res){
 
 });
 
+app.put('/api/projects/:id', function(req, res) {
+    const ID = parseInt(req.params.id);
+    const project = projects.find(p => p.id === ID);
+    if (!project) {
+        return res.status(404).send({ message: 'Project not found' });
+    }
+    Object.keys(req.body).forEach(key => {
+        project[key] = req.body[key];
+    });
+    res.send(project);
+});
+
 // Porneste serverul 
 app.listen(PORT, function() { 
     console.log('Server pornit pe http://localhost:' + PORT); 
