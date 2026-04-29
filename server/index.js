@@ -51,14 +51,18 @@ app.get('/', function(req, res) {
     res.json({'response': 'server working!'});
 });
 
-/*app.get('/api/projects/:id', function(req, res){
-    const project = projects.find(p => p.id === parseInt(req.params.id));
-    if(project==null){
-        res.status(404).json({ error: 'Not found' })
+app.get('/api/projects/:id', async function(req, res){
+    try{
+        const project = await Project.findById(req.params.id);
+        if(project){
+            res.json(project);
+        }
+        else res.status(404).json({message: 'Project ID not found'});
+        
+    } catch(err) {
+        res.status(500).json({error: 'Eroare' + err});
     }
-    else res.json(project);
 });
-*/
 
 /*app.get('/api/stats', function(req, res){
     const count = projects.length;
@@ -77,17 +81,14 @@ app.get('/', function(req, res) {
 });
 */
 
-/*app.delete('/api/projects/:id', function(req, res){
-    const ID = parseInt(req.params.id);
-    const index = projects.findIndex(p => p.id === ID);
-    if(index===-1) res.status(404).json({error: 'Not found'});
-    else {
-        projects.splice(index, 1);
-        res.json({message: 'Deleted'});
+app.delete('/api/projects/:id', async function(req, res){
+    const deleted = await Project.findByIdAndDelete(req.params.id);
+    if(!deleted){
+        res.status(404).json({message: 'Project not found'});
     }
-
+    else res.json({message: 'Deleted'});
 });
-*/
+
 
 /*app.put('/api/projects/:id', function(req, res) {
     const ID = parseInt(req.params.id);
