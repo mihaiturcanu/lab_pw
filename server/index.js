@@ -3,6 +3,7 @@ const app = express();
 
 const mongoose = require('mongoose'); 
 const Project = require('./models/Project');
+
 mongoose.connect('mongodb://localhost:27017/dashboard') 
 .then(function() { 
     console.log('Conectat la MongoDB!'); 
@@ -15,16 +16,19 @@ const PORT = 3000;
 
 app.use(express.json());
 // POST /api/projects - adauga un proiect nou 
-app.post('/api/projects', function(req, res) {     
-    const newProject = {         
-        id: projects.length + 1,         
-        title: req.body.title,         
-        tech: req.body.tech,         
-        done: req.body.done || false,     
-    };     
-    projects.push(newProject);     
-    res.status(201).json(newProject); 
-});
+app.post('/api/projects', async function(req, res) {     
+    try {         
+        const newProject = new Project({             
+            title: req.body.title,             
+            tech: req.body.tech,             
+            done: req.body.done || false,         
+        });         
+        const saved = await newProject.save();         
+        res.status(201).json(saved);     
+    } catch (err) {         
+        res.status(400).json({ error: err.message });     
+    } 
+}); 
 
 // Prima ruta: raspunde la GET / 
 app.get('/api/projects', async function(req, res) {     
@@ -41,6 +45,10 @@ app.get('/api/projects', async function(req, res) {
 // GET /api/projects - returneaza toate proiectele 
 app.get('/api/projects', function(req, res) {     
     res.json(projects); 
+});
+
+app.get('/', function(req, res) {
+    res.json({'response': 'server working!'});
 });
 
 /*app.get('/api/projects/:id', function(req, res){
