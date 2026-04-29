@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose'); 
+const Project = require('./models/Project');
 mongoose.connect('mongodb://localhost:27017/dashboard') 
 .then(function() { 
     console.log('Conectat la MongoDB!'); 
@@ -26,32 +27,32 @@ app.post('/api/projects', function(req, res) {
 });
 
 // Prima ruta: raspunde la GET / 
-app.get('/', function(req, res) { 
-    res.json({ message: 'Serverul functioneaza!' }); 
+app.get('/api/projects', async function(req, res) {     
+    try {         
+        const projects = await Project.find();         
+        res.json(projects);     
+    } catch (err) {         
+        res.status(500).json({ error: 'Eroare ' + err });     
+    } 
 }); 
 
 // Date (temporar in memorie, vom folosi MongoDB mai tarziu) 
-const projects = [     
-    { id: 1, title: "Pagina Personala", tech: "HTML, CSS", done: true },     
-    { id: 2, title: "Calculator Buget", tech: "JS", done: true },     
-    { id: 3, title: "Dashboard React", tech: "React", done: false },     
-    { id: 4, title: "API Meteo", tech: "React, API", done: false }, 
-];  
 
 // GET /api/projects - returneaza toate proiectele 
 app.get('/api/projects', function(req, res) {     
     res.json(projects); 
 });
 
-app.get('/api/projects/:id', function(req, res){
+/*app.get('/api/projects/:id', function(req, res){
     const project = projects.find(p => p.id === parseInt(req.params.id));
     if(project==null){
         res.status(404).json({ error: 'Not found' })
     }
     else res.json(project);
 });
+*/
 
-app.get('/api/stats', function(req, res){
+/*app.get('/api/stats', function(req, res){
     const count = projects.length;
     const finished = projects.filter(function(p){
         if(p.done === true) return p;
@@ -66,8 +67,9 @@ app.get('/api/stats', function(req, res){
     );
 
 });
+*/
 
-app.delete('/api/projects/:id', function(req, res){
+/*app.delete('/api/projects/:id', function(req, res){
     const ID = parseInt(req.params.id);
     const index = projects.findIndex(p => p.id === ID);
     if(index===-1) res.status(404).json({error: 'Not found'});
@@ -77,8 +79,9 @@ app.delete('/api/projects/:id', function(req, res){
     }
 
 });
+*/
 
-app.put('/api/projects/:id', function(req, res) {
+/*app.put('/api/projects/:id', function(req, res) {
     const ID = parseInt(req.params.id);
     const project = projects.find(p => p.id === ID);
     if (!project) {
@@ -89,6 +92,7 @@ app.put('/api/projects/:id', function(req, res) {
     });
     res.send(project);
 });
+*/
 
 // Porneste serverul 
 app.listen(PORT, function() { 
