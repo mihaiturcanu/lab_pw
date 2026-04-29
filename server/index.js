@@ -40,13 +40,6 @@ app.get('/api/projects', async function(req, res) {
     } 
 }); 
 
-// Date (temporar in memorie, vom folosi MongoDB mai tarziu) 
-
-// GET /api/projects - returneaza toate proiectele 
-app.get('/api/projects', function(req, res) {     
-    res.json(projects); 
-});
-
 app.get('/', function(req, res) {
     res.json({'response': 'server working!'});
 });
