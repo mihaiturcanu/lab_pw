@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import NotFound from "./pages/NotFound";
 import About from "../About";
 import Footer from './Footer';
+import AddProject from "./AddProject";
 
 function App(){
   return(
@@ -17,6 +18,7 @@ function App(){
         <Route path="/contact" element={<Contact/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/addnew" element={<AddProject/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

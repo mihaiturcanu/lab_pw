@@ -7,6 +7,7 @@ function Navbar(){
             <NavLink to="/projects">Projects</NavLink>
             <NavLink to="/contact">Contact</NavLink>
             <NavLink to="/about">About</NavLink>
+            <NavLink to="/addnew">Adauga proiect nou</NavLink>
         </nav>
     );
 }
