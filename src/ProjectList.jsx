@@ -6,6 +6,16 @@ function ProjectList(){
     const[loading, setLoading] = useState(true);
     const[error, setError] = useState(null);
     const[search, setSearch] = useState('');
+    async function handleDelete(id){
+        try {
+            await fetch('http://localhost:3000/api/projects/' + id ,{
+                method: 'DELETE'
+            });
+            setProjects(projects.filter(p => p._id !== id)) 
+        } catch (err) {
+            return ("Error: " + err);
+        }
+    }
     useEffect(function(){
         fetch('http://localhost:3000/api/projects').then(function(response){
             return response.json();
@@ -29,7 +39,12 @@ function ProjectList(){
                 return p.title.toLowerCase().includes(search.toLowerCase());
             }).map(function(project, index){
                 if(project.done)
-                return <Card key={index} title={project.title} description={project.tech}/>
+                return (
+                <div>
+                    <Card key={index} title={project.title} description={project.tech}/>
+                    <button onClick={() => handleDelete(project._id)}>Sterge proiect</button>
+                </div>
+                );
             })}
             <div>
                 <h3>Statistica</h3>
