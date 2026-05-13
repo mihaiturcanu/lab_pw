@@ -10,7 +10,9 @@ function ProjectList(){
     const[editTitle, setEditTitle] = useState('');
     const[editTech, setEditTech] = useState('');
     async function handleDelete(id){
-        try {
+        if (window.confirm('Sigur doriti sa stergeti acest proiect?')) { 
+            // ... fetch DELETE ...
+            try {
             await fetch('http://localhost:3000/api/projects/' + id ,{
                 method: 'DELETE'
             });
@@ -18,6 +20,7 @@ function ProjectList(){
         } catch (err) {
             return ("Error: " + err);
         }
+        } 
     }
 
     async function handleSave(id){
