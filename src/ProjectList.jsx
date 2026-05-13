@@ -16,6 +16,21 @@ function ProjectList(){
             return ("Error: " + err);
         }
     }
+
+    async function handleToggle(id, currentDone){
+        try {
+            const response = await fetch('http://localhost:3000/api/projects/' + id, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ done: !currentDone }) 
+            });
+            const updatedProject = await response.json();
+            setProjects(projects.map(p => p._id === id ? updatedProject : p))
+        } catch(err) {
+            return ("Error: " + err);
+        }
+    }
+
     useEffect(function(){
         fetch('http://localhost:3000/api/projects').then(function(response){
             return response.json();
@@ -43,6 +58,7 @@ function ProjectList(){
                 <div>
                     <Card key={index} title={project.title} description={project.tech}/>
                     <button onClick={() => handleDelete(project._id)}>Sterge proiect</button>
+                    <button onClick={() => handleToggle(project._id, project.done)}>Actualizeaza status</button>
                 </div>
                 );
             })}
