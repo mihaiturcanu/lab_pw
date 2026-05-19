@@ -1,0 +1,31 @@
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav + div,
+nav + div + footer,
+nav ~ div {
+  width: min(1120px, calc(100% - 32px));
+}
+
+nav ~ div {
+  margin: 2rem auto;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+nav ~ div > p:first-of-type {
+  max-width: 680px;
+  font-size: 1.08rem;
+}
+
+nav ~ div > h3,
+nav ~ div > div > h3 {
+  margin-top: 1.5rem;
+}

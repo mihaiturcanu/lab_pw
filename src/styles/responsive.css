@@ -1,0 +1,26 @@
+@media (max-width: 720px) {
+  nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  nav a {
+    white-space: nowrap;
+  }
+
+  nav ~ div {
+    width: min(100% - 20px, 1120px);
+    margin: 1rem auto;
+    border-radius: 20px;
+  }
+
+  button {
+    width: 100%;
+    margin: 0.35rem 0 0;
+  }
+
+  nav ~ div button + button {
+    margin-left: 0;
+  }
+}
