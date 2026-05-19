@@ -60,22 +60,20 @@ app.get('/api/projects/:id', async function(req, res){
     }
 });
 
-/*app.get('/api/stats', function(req, res){
-    const count = projects.length;
-    const finished = projects.filter(function(p){
-        if(p.done === true) return p;
-    }).length;
-    const unfinished = projects.filter(function(p){
-        if(p.done === false) return p;
-    }).length;
-    res.json({count: count,
-              finished: finished,
-              unfinished: unfinished
-    }
-    );
-
-});
-*/
+app.get('/api/stats', async function(req, res) { 
+    try { 
+        const total = await Project.countDocuments(); 
+        const done = await Project.countDocuments({ 
+            done: true 
+        }); res.json({ 
+            total: total, 
+            done: done, 
+            inProgress: total - done 
+        }); 
+    } catch (err) { 
+        res.status(500).json({ error: 'Eroare server: ' + err}); 
+    } 
+}); 
 
 app.delete('/api/projects/:id', async function(req, res){
     const deleted = await Project.findByIdAndDelete(req.params.id);
