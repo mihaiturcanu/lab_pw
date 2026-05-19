@@ -65,3 +65,42 @@ nav ~ div > div:has(textarea),
 nav ~ div:has(input) {
   max-width: 760px;
 }
+
+.project-controls {
+  width: min(100% - 32px, 900px);
+  margin: 24px auto;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 14px;
+}
+
+.project-controls input,
+.project-controls select {
+  width: 100%;
+}
+
+.project-item,
+.edit-project {
+  width: min(100% - 32px, 760px);
+  margin: 18px auto;
+  padding: 20px;
+
+  background: white;
+  border-radius: 16px;
+
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.project-item button,
+.edit-project button {
+  margin-right: 10px;
+  margin-top: 8px;
+}
+
+@media (max-width: 800px) {
+  .project-controls {
+    grid-template-columns: 1fr;
+  }
+}
