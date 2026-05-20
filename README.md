@@ -1,6 +1,5 @@
 # Dashboard proiecte
 
-<b>Autor: </b> Mihai Țurcanu
 <p>Acest proiect a fost realizat în cadrul laboratoarelor de Programare Web și permite
 utilizatorului să adauge proiecte și să le modifice, să filtreze proiectele în funcție de starea acestora (finalizat/nefinalizat) și să le sorteze după titlu sau data adăugării acestora.
 </p>
@@ -33,3 +32,6 @@ node index.js
 ```
 npm run dev
 ```
+
+## Autor
+Mihai Țurcanu

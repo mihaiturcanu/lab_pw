@@ -1,3 +1,5 @@
+require('dotenv').config();
+console.log('MONGO_URI:', process.env.MONGO_URI); // adauga temporar
 const express = require('express');
 const app = express();
 
@@ -7,7 +9,7 @@ app.use(cors());
 const mongoose = require('mongoose'); 
 const Project = require('./models/Project');
 
-mongoose.connect('mongodb://localhost:27017/dashboard') 
+mongoose.connect(process.env.MONGO_URI) 
 .then(function() { 
     console.log('Conectat la MongoDB!'); 
 }) 
@@ -15,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/dashboard')
     console.error('Eroare conectare MongoDB:', err); 
 }); 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 // POST /api/projects - adauga un proiect nou 
