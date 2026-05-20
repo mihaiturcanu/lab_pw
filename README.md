@@ -1,16 +1,35 @@
-# React + Vite
+# Dashboard proiecte
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<b>Autor: </b> Mihai Țurcanu
+<p>Acest proiect a fost realizat în cadrul laboratoarelor de Programare Web și permite
+utilizatorului să adauge proiecte și să le modifice, să filtreze proiectele în funcție de starea acestora (finalizat/nefinalizat) și să le sorteze după titlu sau data adăugării acestora.
+</p>
 
-Currently, two official plugins are available:
+## Tehnologii și limbaje folosite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p><b>Frontend:</b> HTML, CSS, React</p>
+<p><b>Backend și logică:</b> JS, Express, MongoDB</p>
 
-## React Compiler
+## Instalarea proiectului
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<p>Inițializare React:</p>
 
-## Expanding the ESLint configuration
+```
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<p>Pentru a realiza conexiunea cu baza de date:</p>
+
+```
+cd server/
+```
+apoi:
+```
+node index.js
+```
+
+<p>Pentru a vizualiza proiectul:</p>
+
+```
+npm run dev
+```
